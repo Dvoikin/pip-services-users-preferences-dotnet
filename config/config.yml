@@ -1,0 +1,49 @@
+---
+# Console logger
+- descriptor: "pip-services-commons:logger:console:default:1.0"
+  level: "trace"
+
+# Performance counters that posts values to log
+- descriptor: "pip-services-commons:counters:log:default:1.0"
+  level: "trace"
+
+{{#MEMORY_ENABLED}}
+# In-memory persistence. Use only for testing!
+- descriptor: "pip-services-users-preferences:persistence:memory:default:1.0"
+{{/MEMORY_ENABLED}}
+
+{{#FILE_ENABLED}}
+# File persistence. Use it for testing of for simple standalone deployments
+- descriptor: "pip-services-users-preferences:persistence:file:default:1.0"
+  path: {{FILE_PATH}}{{^FILE_PATH}}"../data/users-preferences.json"{{/FILE_PATH}}
+{{/FILE_ENABLED}}
+
+{{#MONGO_ENABLED}}
+# MongoDB Persistence
+- descriptor: "pip-services-users-preferences:persistence:mongodb:default:1.0"
+  collection: {{MONGO_COLLECTION}}{{^MONGO_COLLECTION}}quotes{{/MONGO_COLLECTION}}
+  connection:
+    uri: {{MONGO_SERVICE_URI}}
+    host: {{MONGO_SERVICE_HOST}}{{^MONGO_SERVICE_HOST}}localhost{{/MONGO_SERVICE_HOST}}
+    port: {{MONGO_SERVICE_PORT}}{{^MONGO_SERVICE_PORT}}27017{{/MONGO_SERVICE_PORT}}
+    database: {{MONGO_DB}}{{^MONGO_DB}}app{{/MONGO_DB}}
+  credential:
+    username: {{MONGO_USER}}
+    password: {{MONGO_PASS}}
+{{/MONGO_ENABLED}}
+
+{{^MEMORY_ENABLED}}{{^FILE_ENABLED}}{{^MONGO_ENABLED}}
+# Default in-memory persistence
+- descriptor: "pip-services-users-preferences:persistence:memory:default:1.0"
+{{/MONGO_ENABLED}}{{/FILE_ENABLED}}{{/MEMORY_ENABLED}}
+
+# Default controller
+- descriptor: "pip-services-users-preferences:controller:default:default:1.0"
+
+# HTTP endpoint version 1.0
+- descriptor: "pip-services-users-preferences:service:http:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+

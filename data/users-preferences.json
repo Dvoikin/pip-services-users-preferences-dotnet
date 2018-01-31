@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "userId": "1",
+    "preferredEmail": "some@mail.com",
+    "timeZone": "UTC",
+    "language": "en",
+    "theme": "blue"
+  },
+  {
+    "id": "2",
+    "userId": "2",
+    "preferredEmail": "some2@mail.com",
+    "timeZone": "UTC-8",
+    "language": "ru",
+    "theme": "green"
+  }
+]
