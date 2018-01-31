@@ -19,8 +19,8 @@ namespace PipServices.UsersPreferences.Persistence
             var search = filterParams.GetAsNullableString("search");
 
             var id = filterParams.GetAsNullableString("id");
-            var userId = filterParams.GetAsNullableString("userId");
-            var PreferredEmail = filterParams.GetAsNullableString("preferredEmail");
+            var userId = filterParams.GetAsNullableString("user_id");
+            var PreferredEmail = filterParams.GetAsNullableString("preferred_email");
 
             var builder = Builders<UserPreferencesV1>.Filter;
             var filter = builder.Empty;

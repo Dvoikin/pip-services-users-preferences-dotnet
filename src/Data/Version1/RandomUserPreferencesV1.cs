@@ -37,6 +37,7 @@ namespace PipServices.UsersPreferences.Data.Version1
 
             for (var index = 0; index < count; index++)
             {
+                notifications[index] = new NotificationPreferenceV1();
                 notifications[index].Area = RandomText.Word().ToLower();
                 notifications[index].EmailMinSeverity = (MinNotificationSeverityV1) RandomInteger.NextInteger(-1, 3);
                 notifications[index].ShowMinSeverity = (MinNotificationSeverityV1) RandomInteger.NextInteger(-1, 3);

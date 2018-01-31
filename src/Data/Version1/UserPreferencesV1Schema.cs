@@ -8,9 +8,9 @@ namespace PipServices.UsersPreferences.Data.Version1
         public UserPreferencesV1Schema()
         {
             WithOptionalProperty("id", TypeCode.String);
-            WithOptionalProperty("userId", TypeCode.String);
-            WithOptionalProperty("preferredEmail", TypeCode.String);
-            WithOptionalProperty("timeZone", TypeCode.String);
+            WithOptionalProperty("user_id", TypeCode.String);
+            WithOptionalProperty("preferred_email", TypeCode.String);
+            WithOptionalProperty("time_zone", TypeCode.String);
             WithOptionalProperty("language", TypeCode.String);
             WithOptionalProperty("theme", TypeCode.String);
             WithOptionalProperty("notifications", new ArraySchema(TypeCode.Object));

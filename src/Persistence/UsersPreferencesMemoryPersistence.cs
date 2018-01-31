@@ -29,12 +29,18 @@ namespace PipServices.UsersPreferences.Persistence
             filter = filter ?? new FilterParams();
 
             var search = filter.GetAsNullableString("search");
-            var userId = filter.GetAsNullableString("userId");
-            var preferredEmail = filter.GetAsNullableString("preferredEmail");
+            var id = filter.GetAsNullableString("id");
+            var userId = filter.GetAsNullableString("user_id");
+            var preferredEmail = filter.GetAsNullableString("preferred_email");
+            var theme = filter.GetAsNullableString("theme");
+            var language = filter.GetAsNullableString("language");
 
-            result.Add(quote => string.IsNullOrWhiteSpace(search) || MatchSearch(quote, search));
-            result.Add(quote => string.IsNullOrWhiteSpace(userId) || quote.UserId.Equals(userId));
-            result.Add(quote => string.IsNullOrWhiteSpace(preferredEmail) || quote.PreferredEmail.Equals(preferredEmail));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(search) || MatchSearch(userPreferences, search));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(id) || userPreferences.Id.Equals(id));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(userId) || userPreferences.UserId.Equals(userId));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(preferredEmail) || userPreferences.PreferredEmail.Equals(preferredEmail));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(theme) || userPreferences.Theme.Equals(theme));
+            result.Add(userPreferences => string.IsNullOrWhiteSpace(language) || userPreferences.Theme.Equals(language));
 
             return result;
         }
@@ -43,6 +49,9 @@ namespace PipServices.UsersPreferences.Persistence
         {
             return (item.UserId != null && item.UserId.Contains(search)) ? true
                 : (item.PreferredEmail != null && item.PreferredEmail.Contains(search)) ? true
+                : (item.Id != null && item.Id.Contains(search)) ? true
+                : (item.Theme != null && item.Theme.Contains(search)) ? true
+                : (item.Language != null && item.Language.Contains(search)) ? true
                 : false;
         }
     }

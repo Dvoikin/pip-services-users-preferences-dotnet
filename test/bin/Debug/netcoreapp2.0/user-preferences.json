@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "2",
+    "user_id": "2",
+    "preffered_email": "Yellow lopez hotel@Yellow.com",
+    "time_zone": "UTC+-11",
+    "language": "en",
+    "theme": "blue",
+    "notifications": [
+      {},
+      {},
+      {}
+    ]
+  },
+  {
+    "id": "3",
+    "user_id": "3",
+    "preffered_email": "Game green@Gates.com",
+    "time_zone": "UTC+-1",
+    "language": "en",
+    "theme": "blue",
+    "notifications": [
+      {},
+      {},
+      {}
+    ]
+  }
+]

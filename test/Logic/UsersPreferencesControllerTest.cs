@@ -21,7 +21,7 @@ namespace PipServices.UsersPreferences.Logic
             _controller = new UsersPreferencesController();
 
             var references = References.FromTuples(
-                new Descriptor("pip-services-user-preferencess", "persistence", "memory", "default", "1.0"), _persistence
+                new Descriptor("pip-services-users-preferences", "persistence", "memory", "default", "1.0"), _persistence
             );
             _controller.SetReferences(references);
         }

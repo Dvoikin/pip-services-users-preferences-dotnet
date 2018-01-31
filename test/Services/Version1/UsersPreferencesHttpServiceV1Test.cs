@@ -69,7 +69,7 @@ namespace PipServices.UsersPreferences.Services.Version1
         public async Task TestCrudOperationsAsync()
         {
             // Create one userPreferences
-            UserPreferencesV1 userPreferences1 = await Invoke<UserPreferencesV1>("/users_preferences/create_quote", new { userPreferences = USER_PREFERENCES1 });
+            UserPreferencesV1 userPreferences1 = await Invoke<UserPreferencesV1>("/users_preferences/create_user_preferences", new { user_preferences = USER_PREFERENCES1 });
 
             Assert.NotNull(userPreferences1);
             Assert.Equal(USER_PREFERENCES1.Id, userPreferences1.Id);
@@ -77,7 +77,7 @@ namespace PipServices.UsersPreferences.Services.Version1
             Assert.Equal(USER_PREFERENCES1.UserId, userPreferences1.UserId);
 
             // Create another userPreferences
-            UserPreferencesV1 userPreferences2 = await Invoke<UserPreferencesV1>("/users_preferences/create_quote", new { userPreferences = USER_PREFERENCES2 });
+            UserPreferencesV1 userPreferences2 = await Invoke<UserPreferencesV1>("/users_preferences/create_user_preferences", new { user_preferences = USER_PREFERENCES2 });
 
             Assert.NotNull(userPreferences2);
             Assert.Equal(USER_PREFERENCES2.Id, userPreferences2.Id);
@@ -92,7 +92,7 @@ namespace PipServices.UsersPreferences.Services.Version1
 
             // Update the userPreferences
             userPreferences1.UserId = "3";
-            UserPreferencesV1 userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/update_quote", new { userPreferences = userPreferences1 });
+            UserPreferencesV1 userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/update_user_preferences", new { user_preferences = userPreferences1 });
 
             Assert.NotNull(userPreferences);
             Assert.Equal(userPreferences1.Id, userPreferences.Id);
