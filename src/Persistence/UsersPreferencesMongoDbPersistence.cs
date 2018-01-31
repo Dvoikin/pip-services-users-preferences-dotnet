@@ -16,22 +16,29 @@ namespace PipServices.UsersPreferences.Persistence
 
         private FilterDefinition<UserPreferencesV1> ComposeFilter(FilterParams filterParams)
         {
-            var search = filterParams.GetAsNullableString("search");
+            filterParams = filterParams ?? new FilterParams();
 
+            var search = filterParams.GetAsNullableString("search");
             var id = filterParams.GetAsNullableString("id");
             var userId = filterParams.GetAsNullableString("user_id");
-            var PreferredEmail = filterParams.GetAsNullableString("preferred_email");
+            var preferredEmail = filterParams.GetAsNullableString("preferred_email");
+            var theme = filterParams.GetAsNullableString("theme");
+            var language = filterParams.GetAsNullableString("language");
 
             var builder = Builders<UserPreferencesV1>.Filter;
             var filter = builder.Empty;
-            if (id != null) filter &= builder.Eq(q => q.Id, id);
-            if (userId != null) filter &= builder.Eq(q => q.UserId, userId);
-            if (PreferredEmail != null) filter &= builder.Eq(q => q.PreferredEmail, PreferredEmail);
+            if (id != null) filter &= builder.Eq(up => up.Id, id);
+            if (userId != null) filter &= builder.Eq(up => up.UserId, userId);
+            if (preferredEmail != null) filter &= builder.Eq(up => up.PreferredEmail, preferredEmail);
+            if (theme != null) filter &= builder.Eq(up => up.Theme, theme);
+            if (language != null) filter &= builder.Eq(up => up.Language, language);
             if (!string.IsNullOrEmpty(search))
             {
-                var searchFilter = builder.Where(q => q.Id.ToLower().Contains(search));
-                searchFilter |= builder.Where(q => q.UserId.ToLower().Contains(search));
-                searchFilter |= builder.Where(q => q.PreferredEmail.ToLower().Contains(search));
+                var searchFilter = builder.Where(up => up.Id.ToLower().Contains(search));
+                searchFilter |= builder.Where(up => up.UserId.ToLower().Contains(search));
+                searchFilter |= builder.Where(up => up.PreferredEmail.ToLower().Contains(search));
+                searchFilter |= builder.Where(up => up.Theme.ToLower().Contains(search));
+                searchFilter |= builder.Where(up => up.Language.ToLower().Contains(search));
                 filter &= searchFilter;
             }
 

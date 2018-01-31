@@ -2,12 +2,11 @@
   {
     "id": "2",
     "user_id": "2",
-    "preffered_email": "Yellow lopez hotel@Yellow.com",
-    "time_zone": "UTC+-11",
+    "preffered_email": "Large@Chair.com",
+    "time_zone": "UTC+-10",
     "language": "en",
     "theme": "blue",
     "notifications": [
-      {},
       {},
       {}
     ]
@@ -15,8 +14,8 @@
   {
     "id": "3",
     "user_id": "3",
-    "preffered_email": "Game green@Gates.com",
-    "time_zone": "UTC+-1",
+    "preffered_email": "Carmack zontak@John.com",
+    "time_zone": "UTC+7",
     "language": "en",
     "theme": "blue",
     "notifications": [

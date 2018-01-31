@@ -33,16 +33,16 @@ namespace PipServices.UsersPreferences.Persistence
             _persistence.CloseAsync(null).Wait();
         }
 
-        /*[Fact]
+        [Fact]
         public async Task TestMongoDbCrudOperationsAsync()
         {
             await _fixture.TestCrudOperationsAsync();
-        }*/
+        }
 
-        /*[Fact]
+        [Fact]
         public async Task TestMongoDbGetByFilterAsync()
         {
             await _fixture.TestGetByFilterAsync();
-        }*/
+        }
     }
 }
