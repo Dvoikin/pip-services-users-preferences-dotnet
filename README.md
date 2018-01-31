@@ -1,1 +1,1 @@
-# pip-services-users-preferences-dotnet
+# Pip.Services user preferences dotnet service
