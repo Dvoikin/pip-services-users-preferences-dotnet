@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    image: ${IMAGE:-pipdevs/test}
+    command: ${TEST_CMD:-dotnet test test/test.csproj}
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_ENABLED=true
+      - MONGO_SERVICE_HOST=mongo
+      - MONGO_SERVICE_PORT=27017
+
+  mongo:
+    image: mongo:latest
+

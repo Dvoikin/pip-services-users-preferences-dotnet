@@ -1,0 +1,20 @@
+# Build stage
+FROM microsoft/aspnetcore-build:2 AS build
+
+# set working directory
+WORKDIR /app
+
+# Restore
+COPY run/run.csproj ./run/
+RUN dotnet restore run/run.csproj
+COPY src/src.csproj ./src/
+RUN dotnet restore src/src.csproj
+COPY test/test.csproj ./test/
+RUN dotnet restore test/test.csproj
+
+# Copy src
+COPY . .
+
+# Publish
+RUN dotnet publish run/run.csproj -o /obj
+
