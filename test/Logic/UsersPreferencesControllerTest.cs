@@ -38,19 +38,17 @@ namespace PipServices.UsersPreferences.Logic
         public async Task TestCrudOperationsAsync()
         {
             // Create one userPreferences
-            UserPreferencesV1 userPreferences1 = await _persistence.CreateAsync(null, USER_PREFERENCES1);
+            UserPreferencesV1 userPreferences1 = await _persistence.SetAsync(null, USER_PREFERENCES1);
 
             Assert.NotNull(userPreferences1);
             Assert.Equal(USER_PREFERENCES1.Id, userPreferences1.Id);
-            Assert.Equal(USER_PREFERENCES1.Notifications.Length, userPreferences1.Notifications.Length);
             Assert.Equal(USER_PREFERENCES1.UserId, userPreferences1.UserId);
 
             // Create another userPreferences
-            UserPreferencesV1 userPreferences2 = await _persistence.CreateAsync(null, USER_PREFERENCES2);
+            UserPreferencesV1 userPreferences2 = await _persistence.SetAsync(null, USER_PREFERENCES2);
 
             Assert.NotNull(userPreferences2);
             Assert.Equal(USER_PREFERENCES2.Id, userPreferences2.Id);
-            Assert.Equal(USER_PREFERENCES2.Notifications.Length, userPreferences2.Notifications.Length);
             Assert.Equal(USER_PREFERENCES2.UserId, userPreferences2.UserId);
 
             // Get all userPreferencess
@@ -61,22 +59,21 @@ namespace PipServices.UsersPreferences.Logic
 
             // Update the userPreferences
             userPreferences1.UserId = "3";
-            UserPreferencesV1 userPreferences = await _persistence.UpdateAsync(
+            UserPreferencesV1 userPreferences = await _persistence.SetAsync(
                 null,
                 userPreferences1
             );
 
             Assert.NotNull(userPreferences);
             Assert.Equal(userPreferences1.Id, userPreferences.Id);
-            Assert.Equal(userPreferences1.Notifications.Length, userPreferences.Notifications.Length);
             Assert.Equal("3", userPreferences.UserId);
 
             // Delete the userPreferences
-            await _persistence.DeleteByIdAsync(null, userPreferences1.Id);
+            await _persistence.ClearAsync(null, userPreferences1);
 
             // Try to get deleted userPreferences
             userPreferences = await _persistence.GetOneByIdAsync(null, userPreferences1.Id);
-            Assert.Null(userPreferences);
+            Assert.Null(userPreferences.Theme);
         }
 
     }

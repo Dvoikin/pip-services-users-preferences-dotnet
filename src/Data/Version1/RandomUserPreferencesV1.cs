@@ -30,21 +30,21 @@ namespace PipServices.UsersPreferences.Data.Version1
             return value;
         }
 
-        public static NotificationPreferenceV1[] Notifications()
-        {
-            var count = RandomInteger.NextInteger(0, 5);
-            var notifications = new NotificationPreferenceV1[count];
+        //public static notificationpreferencev1[] notifications()
+        //{
+        //    var count = randominteger.nextinteger(0, 5);
+        //    var notifications = new notificationpreferencev1[count];
 
-            for (var index = 0; index < count; index++)
-            {
-                notifications[index] = new NotificationPreferenceV1();
-                notifications[index].Area = RandomText.Word().ToLower();
-                notifications[index].EmailMinSeverity = (MinNotificationSeverityV1) RandomInteger.NextInteger(-1, 3);
-                notifications[index].ShowMinSeverity = (MinNotificationSeverityV1) RandomInteger.NextInteger(-1, 3);
-            }
+        //    for (var index = 0; index < count; index++)
+        //    {
+        //        notifications[index] = new notificationpreferencev1();
+        //        notifications[index].area = randomtext.word().tolower();
+        //        notifications[index].emailminseverity = (minnotificationseverityv1)randominteger.nextinteger(-1, 3);
+        //        notifications[index].showminseverity = (minnotificationseverityv1)randominteger.nextinteger(-1, 3);
+        //    }
 
-            return notifications;
-        }
+        //    return notifications;
+        //}
 
         public static UserPreferencesV1 UserPreferences()
         {
@@ -56,7 +56,7 @@ namespace PipServices.UsersPreferences.Data.Version1
                 TimeZone = TimeZone(),
                 Language = Language(),
                 Theme = Theme(),
-                Notifications = Notifications()
+                //Notifications = Notifications()
             };
         }
     }

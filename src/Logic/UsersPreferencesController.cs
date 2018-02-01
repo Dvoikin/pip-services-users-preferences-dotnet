@@ -38,29 +38,29 @@ namespace PipServices.UsersPreferences.Logic
             return _persistence.GetPageByFilterAsync(correlationId, filter, paging);
         }
 
-        public Task<UserPreferencesV1> GetRandomUserPreferencesAsync(string correlationId, FilterParams filter)
-        {
-            return _persistence.GetOneRandomAsync(correlationId, filter);
-        }
-
         public Task<UserPreferencesV1> GetUserPreferencesByIdAsync(string correlationId, string UserPreferencesId)
         {
             return _persistence.GetOneByIdAsync(correlationId, UserPreferencesId);
         }
 
-        public Task<UserPreferencesV1> CreateUserPreferencesAsync(string correlationId, UserPreferencesV1 UserPreferences)
+        public Task<UserPreferencesV1> SetUserPreferencesAsync(string correlationId, UserPreferencesV1 UserPreferences)
         {
-            return _persistence.CreateAsync(correlationId, UserPreferences);
+            return _persistence.SetAsync(correlationId, UserPreferences);
         }
 
-        public Task<UserPreferencesV1> UpdateUserPreferencesAsync(string correlationId, UserPreferencesV1 UserPreferences)
+        public Task<UserPreferencesV1> ClearUserPreferencesAsync(string correlationId, UserPreferencesV1 userPreferences)
         {
-            return _persistence.UpdateAsync(correlationId, UserPreferences);
-        }
+            var up = new UserPreferencesV1
+            {
+                Id = userPreferences.Id,
+                UserId = userPreferences.UserId,
+                PreferredEmail = null,
+                TimeZone = null,
+                Language = null,
+                Theme = null
+            };
 
-        public Task<UserPreferencesV1> DeleteUserPreferencesByIdAsync(string correlationId, string UserPreferencesId)
-        {
-            return _persistence.DeleteByIdAsync(correlationId, UserPreferencesId);
+            return _persistence.SetAsync(correlationId, up);
         }
     }
 }

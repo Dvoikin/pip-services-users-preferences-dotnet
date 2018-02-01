@@ -30,27 +30,24 @@ namespace PipServices.UsersPreferences.Persistence
         public async Task TestCrudOperationsAsync()
         {
             // Create one userPreferences
-            UserPreferencesV1 userPreferences1 = await _persistence.CreateAsync(null, USER_PREFERENCES1);
+            UserPreferencesV1 userPreferences1 = await _persistence.SetAsync(null, USER_PREFERENCES1);
 
             Assert.NotNull(userPreferences1);
             Assert.Equal(USER_PREFERENCES1.Id, userPreferences1.Id);
-            Assert.Equal(USER_PREFERENCES1.Notifications.Length, userPreferences1.Notifications.Length);
             Assert.Equal(USER_PREFERENCES1.UserId, userPreferences1.UserId);
 
             // Create another userPreferences
-            UserPreferencesV1 userPreferences2 = await _persistence.CreateAsync(null, USER_PREFERENCES2);
+            UserPreferencesV1 userPreferences2 = await _persistence.SetAsync(null, USER_PREFERENCES2);
 
             Assert.NotNull(userPreferences2);
             Assert.Equal(USER_PREFERENCES2.Id, userPreferences2.Id);
-            Assert.Equal(USER_PREFERENCES2.Notifications.Length, userPreferences2.Notifications.Length);
             Assert.Equal(USER_PREFERENCES2.UserId, userPreferences2.UserId);
 
             // Create another userPreferences
-            UserPreferencesV1 userPreferences3 = await _persistence.CreateAsync(null, USER_PREFERENCES3);
+            UserPreferencesV1 userPreferences3 = await _persistence.SetAsync(null, USER_PREFERENCES3);
 
             Assert.NotNull(userPreferences3);
             Assert.Equal(USER_PREFERENCES3.Id, userPreferences3.Id);
-            Assert.Equal(USER_PREFERENCES3.Notifications.Length, userPreferences3.Notifications.Length);
             Assert.Equal(USER_PREFERENCES3.UserId, userPreferences3.UserId);
 
             // Get all quotes
@@ -61,33 +58,32 @@ namespace PipServices.UsersPreferences.Persistence
 
             // Update the userPreferences
             userPreferences1.UserId = "3";
-            UserPreferencesV1 userPreferences = await _persistence.UpdateAsync(
+            UserPreferencesV1 userPreferences = await _persistence.SetAsync(
                 null,
                 userPreferences1
             );
 
             Assert.NotNull(userPreferences);
             Assert.Equal(userPreferences1.Id, userPreferences.Id);
-            Assert.Equal(userPreferences1.Notifications.Length, userPreferences.Notifications.Length);
             Assert.Equal("3", userPreferences.UserId);
 
             // Delete the quote
-            await _persistence.DeleteByIdAsync(null, userPreferences1.Id);
+            await _persistence.ClearAsync(null, userPreferences1);
 
             // Try to get deleted quote
-            userPreferences = await _persistence.GetOneByIdAsync(null, userPreferences1.Id);
-            Assert.Null(userPreferences);
+            userPreferences = await _persistence.GetOneByIdAsync(null, userPreferences1.UserId);
+            Assert.Null(userPreferences.Theme);
         }
 
         public async Task TestGetByFilterAsync()
         {
             // Create items
-            await _persistence.CreateAsync(null, USER_PREFERENCES1);
-            await _persistence.CreateAsync(null, USER_PREFERENCES2);
-            await _persistence.CreateAsync(null, USER_PREFERENCES3);
+            await _persistence.SetAsync(null, USER_PREFERENCES1);
+            await _persistence.SetAsync(null, USER_PREFERENCES2);
+            await _persistence.SetAsync(null, USER_PREFERENCES3);
 
             // Get by id
-            FilterParams filter = FilterParams.FromTuples("id", "1");
+            FilterParams filter = FilterParams.FromTuples("user_id", "1");
             DataPage<UserPreferencesV1> page = await _persistence.GetPageByFilterAsync(null, filter, null);
             Assert.Single(page.Data);
 
@@ -99,7 +95,7 @@ namespace PipServices.UsersPreferences.Persistence
             // Get by search
             filter = FilterParams.FromTuples("search", USER_PREFERENCES1.PreferredEmail);
             page = await _persistence.GetPageByFilterAsync(null, filter, null);
-            Assert.Equal(1, page.Data.Count);
+            Assert.Single(page.Data);
         }
     }
 }

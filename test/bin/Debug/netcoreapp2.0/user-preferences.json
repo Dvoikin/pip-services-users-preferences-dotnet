@@ -1,27 +1,26 @@
 [
   {
+    "id": "1",
+    "user_id": "1",
+    "preffered_email": "Vesta. Chair@Hotel.com",
+    "time_zone": "UTC+-5",
+    "language": "en",
+    "theme": "green"
+  },
+  {
     "id": "2",
     "user_id": "2",
-    "preffered_email": "Large@Chair.com",
-    "time_zone": "UTC+-10",
+    "preffered_email": "Wine yellow sergio@Ball.com",
+    "time_zone": "UTC+-7",
     "language": "en",
-    "theme": "blue",
-    "notifications": [
-      {},
-      {}
-    ]
+    "theme": "blue"
   },
   {
     "id": "3",
     "user_id": "3",
-    "preffered_email": "Carmack zontak@John.com",
-    "time_zone": "UTC+7",
+    "preffered_email": "Game, slower@Wine.com",
+    "time_zone": "UTC+-10",
     "language": "en",
-    "theme": "blue",
-    "notifications": [
-      {},
-      {},
-      {}
-    ]
+    "theme": "blue"
   }
 ]

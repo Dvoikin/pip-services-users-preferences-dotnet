@@ -6,7 +6,7 @@ namespace PipServices.UsersPreferences.Container
     public class UsersPreferencesProcess : ProcessContainer
     {
         public UsersPreferencesProcess()
-            : base("users preferences", "Inspirational users preferences microservice")
+            : base("users preferences", "Users preferences microservice")
         {
             _factories.Add(new UsersPreferencesServiceFactory());
         }

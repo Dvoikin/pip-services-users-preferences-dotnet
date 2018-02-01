@@ -12,10 +12,8 @@ namespace PipServices.UsersPreferences.Logic
         CommandSet GetCommandSet();
 
         Task<DataPage<UserPreferencesV1>> GetUsersPreferencesAsync(string correlationId, FilterParams filter, PagingParams paging);
-        Task<UserPreferencesV1> GetRandomUserPreferencesAsync(string correlationId, FilterParams filter);
         Task<UserPreferencesV1> GetUserPreferencesByIdAsync(string correlationId, string userPreferencesId);
-        Task<UserPreferencesV1> CreateUserPreferencesAsync(string correlationId, UserPreferencesV1 userPreferences);
-        Task<UserPreferencesV1> UpdateUserPreferencesAsync(string correlationId, UserPreferencesV1 userPreferences);
-        Task<UserPreferencesV1> DeleteUserPreferencesByIdAsync(string correlationId, string userPreferencesId);
+        Task<UserPreferencesV1> SetUserPreferencesAsync(string correlationId, UserPreferencesV1 userPreferences);
+        Task<UserPreferencesV1> ClearUserPreferencesAsync(string correlationId, UserPreferencesV1 userPreferences);
     }
 }

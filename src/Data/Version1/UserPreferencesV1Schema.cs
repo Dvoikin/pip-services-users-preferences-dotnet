@@ -13,7 +13,6 @@ namespace PipServices.UsersPreferences.Data.Version1
             WithOptionalProperty("time_zone", TypeCode.String);
             WithOptionalProperty("language", TypeCode.String);
             WithOptionalProperty("theme", TypeCode.String);
-            WithOptionalProperty("notifications", new ArraySchema(TypeCode.Object));
         }
     }
 }

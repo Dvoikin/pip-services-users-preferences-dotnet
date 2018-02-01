@@ -29,8 +29,5 @@ namespace PipServices.UsersPreferences.Data.Version1
 
         [DataMember(Name = "theme")]
         public string Theme { get; set; }
-
-        [DataMember(Name = "notifications")]
-        public NotificationPreferenceV1[] Notifications { get; set; }
     }
 }

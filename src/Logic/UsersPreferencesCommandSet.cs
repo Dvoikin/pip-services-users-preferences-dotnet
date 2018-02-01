@@ -16,11 +16,9 @@ namespace PipServices.UsersPreferences.Logic
             _logic = logic;
 
             AddCommand(MakeGetUsersPreferencesCommand());
-            AddCommand(MakeGetRandomUserPreferencesCommand());
             AddCommand(MakeGetUserPreferencesByIdCommand());
-            AddCommand(MakeCreateUserPreferencesCommand());
-            AddCommand(MakeUpdateUserPreferencesCommand());
-            AddCommand(MakeDeleteUserPreferencesByIdCommand());
+            AddCommand(MakeSetUserPreferencesCommand());
+            AddCommand(MakeClearUserPreferencesByIdCommand());
         }
 
         private ICommand MakeGetUsersPreferencesCommand()
@@ -38,19 +36,6 @@ namespace PipServices.UsersPreferences.Logic
                 });
         }
 
-        private ICommand MakeGetRandomUserPreferencesCommand()
-        {
-            return new Command(
-                "get_random_user_preferences",
-                new ObjectSchema()
-                    .WithOptionalProperty("filter", new FilterParamsSchema()),
-                async (correlationId, parameters) =>
-                {
-                    var filter = FilterParams.FromValue(parameters.Get("filter"));
-                    return await _logic.GetRandomUserPreferencesAsync(correlationId, filter);
-                });
-        }
-
         private ICommand MakeGetUserPreferencesByIdCommand()
         {
             return new Command(
@@ -64,42 +49,29 @@ namespace PipServices.UsersPreferences.Logic
                 });
         }
 
-        private ICommand MakeCreateUserPreferencesCommand()
+        private ICommand MakeSetUserPreferencesCommand()
         {
             return new Command(
-                "create_user_preferences",
+                "set_user_preferences",
                 new ObjectSchema()
                     .WithRequiredProperty("user_preferences", new UserPreferencesV1Schema()),
                 async (correlation_id, parameters) =>
                 {
                     var UserPreferences = ConvertToUserPreferences(parameters.Get("user_preferences"));
-                    return await _logic.CreateUserPreferencesAsync(correlation_id, UserPreferences);
+                    return await _logic.SetUserPreferencesAsync(correlation_id, UserPreferences);
                 });
         }
 
-        private ICommand MakeUpdateUserPreferencesCommand()
+        private ICommand MakeClearUserPreferencesByIdCommand()
         {
             return new Command(
-                "update_user_preferences",
+                "clear_user_preferences",
                 new ObjectSchema()
                     .WithRequiredProperty("user_preferences", new UserPreferencesV1Schema()),
                 async (correlationId, parameters) =>
                 {
                     var UserPreferences = ConvertToUserPreferences(parameters.Get("user_preferences"));
-                    return await _logic.UpdateUserPreferencesAsync(correlationId, UserPreferences);
-                });
-        }
-
-        private ICommand MakeDeleteUserPreferencesByIdCommand()
-        {
-            return new Command(
-                "delete_user_preferences_by_id",
-                new ObjectSchema()
-                    .WithOptionalProperty("user_preferences_id", TypeCode.String),
-                async (correlationId, parameters) =>
-                {
-                    var UserPreferencesId = parameters.GetAsString("user_preferences_id");
-                    return await _logic.DeleteUserPreferencesByIdAsync(correlationId, UserPreferencesId);
+                    return await _logic.ClearUserPreferencesAsync(correlationId, UserPreferences);
                 });
         }
 

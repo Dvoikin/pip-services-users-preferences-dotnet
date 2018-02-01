@@ -69,19 +69,17 @@ namespace PipServices.UsersPreferences.Services.Version1
         public async Task TestCrudOperationsAsync()
         {
             // Create one userPreferences
-            UserPreferencesV1 userPreferences1 = await Invoke<UserPreferencesV1>("/users_preferences/create_user_preferences", new { user_preferences = USER_PREFERENCES1 });
+            UserPreferencesV1 userPreferences1 = await Invoke<UserPreferencesV1>("/users_preferences/set_user_preferences", new { user_preferences = USER_PREFERENCES1 });
 
             Assert.NotNull(userPreferences1);
             Assert.Equal(USER_PREFERENCES1.Id, userPreferences1.Id);
-            Assert.Equal(USER_PREFERENCES1.Notifications.Length, userPreferences1.Notifications.Length);
             Assert.Equal(USER_PREFERENCES1.UserId, userPreferences1.UserId);
 
             // Create another userPreferences
-            UserPreferencesV1 userPreferences2 = await Invoke<UserPreferencesV1>("/users_preferences/create_user_preferences", new { user_preferences = USER_PREFERENCES2 });
+            UserPreferencesV1 userPreferences2 = await Invoke<UserPreferencesV1>("/users_preferences/set_user_preferences", new { user_preferences = USER_PREFERENCES2 });
 
             Assert.NotNull(userPreferences2);
             Assert.Equal(USER_PREFERENCES2.Id, userPreferences2.Id);
-            Assert.Equal(USER_PREFERENCES2.Notifications.Length, userPreferences2.Notifications.Length);
             Assert.Equal(USER_PREFERENCES2.UserId, userPreferences2.UserId);
 
             // Get all usersPreferences
@@ -92,19 +90,16 @@ namespace PipServices.UsersPreferences.Services.Version1
 
             // Update the userPreferences
             userPreferences1.UserId = "3";
-            UserPreferencesV1 userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/update_user_preferences", new { user_preferences = userPreferences1 });
+            UserPreferencesV1 userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/set_user_preferences", new { user_preferences = userPreferences1 });
 
             Assert.NotNull(userPreferences);
             Assert.Equal(userPreferences1.Id, userPreferences.Id);
-            Assert.Equal(userPreferences1.Notifications.Length, userPreferences.Notifications.Length);
             Assert.Equal("3", userPreferences.UserId);
 
-            // Delete the userPreferences
-            await Invoke<UserPreferencesV1>("/users_preferences/delete_user_preferences_by_id", new { user_preferences_id = userPreferences1.Id });
+            // Clear the userPreferences
+            userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/clear_user_preferences", new { user_preferences = userPreferences2 });
 
-            // Try to get deleted userPreferences
-            userPreferences = await Invoke<UserPreferencesV1>("/users_preferences/get_user_preferences_by_id", new { user_preferences_id = userPreferences1.Id });
-            Assert.Null(userPreferences);
+            Assert.Null(userPreferences.Theme);
         }
 
         private static async Task<T> Invoke<T>(string route, dynamic request)

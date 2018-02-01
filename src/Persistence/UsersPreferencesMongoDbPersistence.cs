@@ -10,7 +10,7 @@ namespace PipServices.UsersPreferences.Persistence
 {
     public class UsersPreferencesMongoDbPersistence : IdentifiableMongoDbPersistence<UserPreferencesV1, string>, IUsersPreferencesPersistence
     {
-        public UsersPreferencesMongoDbPersistence() : base("users-preferences")
+        public UsersPreferencesMongoDbPersistence() : base("users_preferences")
         {
         }
 
@@ -19,7 +19,6 @@ namespace PipServices.UsersPreferences.Persistence
             filterParams = filterParams ?? new FilterParams();
 
             var search = filterParams.GetAsNullableString("search");
-            var id = filterParams.GetAsNullableString("id");
             var userId = filterParams.GetAsNullableString("user_id");
             var preferredEmail = filterParams.GetAsNullableString("preferred_email");
             var theme = filterParams.GetAsNullableString("theme");
@@ -27,15 +26,13 @@ namespace PipServices.UsersPreferences.Persistence
 
             var builder = Builders<UserPreferencesV1>.Filter;
             var filter = builder.Empty;
-            if (id != null) filter &= builder.Eq(up => up.Id, id);
             if (userId != null) filter &= builder.Eq(up => up.UserId, userId);
             if (preferredEmail != null) filter &= builder.Eq(up => up.PreferredEmail, preferredEmail);
             if (theme != null) filter &= builder.Eq(up => up.Theme, theme);
             if (language != null) filter &= builder.Eq(up => up.Language, language);
             if (!string.IsNullOrEmpty(search))
             {
-                var searchFilter = builder.Where(up => up.Id.ToLower().Contains(search));
-                searchFilter |= builder.Where(up => up.UserId.ToLower().Contains(search));
+                var searchFilter = builder.Where(up => up.UserId.ToLower().Contains(search));
                 searchFilter |= builder.Where(up => up.PreferredEmail.ToLower().Contains(search));
                 searchFilter |= builder.Where(up => up.Theme.ToLower().Contains(search));
                 searchFilter |= builder.Where(up => up.Language.ToLower().Contains(search));
@@ -53,6 +50,27 @@ namespace PipServices.UsersPreferences.Persistence
         public Task<DataPage<UserPreferencesV1>> GetPageByFilterAsync(string correlationId, FilterParams filterParams, PagingParams paging)
         {
             return base.GetPageByFilterAsync(correlationId, ComposeFilter(filterParams), paging);
+        }
+
+        public new Task<UserPreferencesV1> GetOneByIdAsync(string correlationId, string userId)
+        {
+            var filterParams = new FilterParams();
+
+            filterParams.Add("user_id", userId);
+            return base.GetOneRandomAsync(correlationId, ComposeFilter(filterParams));
+        }
+
+        public Task<UserPreferencesV1> ClearAsync(string correlationId, UserPreferencesV1 UserPreferences)
+        {
+            return base.SetAsync(correlationId, new UserPreferencesV1
+            {
+                Id = UserPreferences.Id,
+                UserId = UserPreferences.UserId,
+                PreferredEmail = null,
+                TimeZone = null,
+                Language = null,
+                Theme = null
+            });
         }
 
     }
