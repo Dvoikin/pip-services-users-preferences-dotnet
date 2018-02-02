@@ -1,9 +1,0 @@
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\src.csprojResolveAssemblyReference.cache
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\src.csproj.CoreCompileInputs.cache
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\src.AssemblyInfoInputs.cache
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\src.AssemblyInfo.cs
-C:\Work\ice\user-preferences\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.deps.json
-C:\Work\ice\user-preferences\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.dll
-C:\Work\ice\user-preferences\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.pdb
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\PipServices.UsersPreferences.dll
-C:\Work\ice\user-preferences\src\obj\Debug\netcoreapp2.0\PipServices.UsersPreferences.pdb
