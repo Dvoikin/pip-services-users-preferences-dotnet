@@ -12,11 +12,6 @@ namespace PipServices.UsersPreferences.Persistence
     {
         public int ItemsCount { get { return _items.Count; } }
 
-        public Task<UserPreferencesV1> GetOneRandomAsync(string correlationId, FilterParams filterParams)
-        {
-            return base.GetOneRandomAsync(correlationId, ComposeFilter(filterParams));
-        }
-
         public Task<DataPage<UserPreferencesV1>> GetPageByFilterAsync(string correlationId, FilterParams filterParams, PagingParams paging)
         {
             return base.GetPageByFilterAsync(correlationId, ComposeFilter(filterParams), paging);
