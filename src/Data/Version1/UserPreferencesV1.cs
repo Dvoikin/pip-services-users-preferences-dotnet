@@ -18,7 +18,7 @@ namespace PipServices.UsersPreferences.Data.Version1
         [DataMember(Name = "user_id")]
         public string UserId { get; set; }
 
-        [DataMember(Name = "preffered_email")]
+        [DataMember(Name = "preferred_email")]
         public string PreferredEmail { get; set; }
 
         [DataMember(Name = "time_zone")]
