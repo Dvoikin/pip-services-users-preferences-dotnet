@@ -29,6 +29,12 @@ namespace PipServices.UsersPreferences.Persistence
             });
         }
 
+        public new Task<UserPreferencesV1> SetAsync(string correlationId, UserPreferencesV1 UserPreferences)
+        {
+            var up = UserPreferences;
+            return base.SetAsync(correlationId, up);
+        }
+
         private IList<Func<UserPreferencesV1, bool>> ComposeFilter(FilterParams filter)
         {
             var result = new List<Func<UserPreferencesV1, bool>>();

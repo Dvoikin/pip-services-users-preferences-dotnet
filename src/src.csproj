@@ -14,7 +14,7 @@
     <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
     <PackageReference Include="PipServices.Commons" Version="2.2.1" />
     <PackageReference Include="PipServices.Container" Version="2.1.0" />
-    <PackageReference Include="PipServices.Data" Version="2.1.2" />
+    <PackageReference Include="PipServices.Data" Version="2.2.1" />
     <PackageReference Include="PipServices.Net" Version="2.1.1" />
   </ItemGroup>
 

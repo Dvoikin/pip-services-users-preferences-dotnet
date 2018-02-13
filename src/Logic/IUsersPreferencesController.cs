@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipServices.UsersPreferences.Logic
 {
-    public interface IUsersPreferencesController : IReferenceable
+    public interface IUsersPreferencesController
     {
         CommandSet GetCommandSet();
 

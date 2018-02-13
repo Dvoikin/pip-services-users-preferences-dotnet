@@ -55,6 +55,12 @@ namespace PipServices.UsersPreferences.Persistence
             return base.GetOneRandomAsync(correlationId, ComposeFilter(filterParams));
         }
 
+        public new Task<UserPreferencesV1> SetAsync(string correlationId, UserPreferencesV1 UserPreferences)
+        {
+            var up = UserPreferences;
+            return base.SetAsync(correlationId, up);
+        }
+
         public Task<UserPreferencesV1> ClearAsync(string correlationId, UserPreferencesV1 UserPreferences)
         {
             return base.SetAsync(correlationId, new UserPreferencesV1

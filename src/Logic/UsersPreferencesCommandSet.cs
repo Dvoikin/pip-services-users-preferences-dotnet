@@ -80,24 +80,5 @@ namespace PipServices.UsersPreferences.Logic
             var json = JsonConverter.ToJson(value);
             return JsonConverter.FromJson<UserPreferencesV1>(json);
         }
-
-        //private static UserPreferencesV1 ExtractUserPreferences(Parameters args)
-        //{
-        //    var map = args.GetAsMap("user_preferences");
-
-        //    return ExtractUserPreferences(map);
-        //}
-
-        //private static UserPreferencesV1 ExtractUserPreferences(AnyValueMap map)
-        //{
-        //    var Id = map.GetAsStringWithDefault("id", string.Empty);
-        //    var UserId = map.GetAsStringWithDefault("user_id", string.Empty);
-        //    var PreferredEmail = map.GetAsStringWithDefault("preferred_email", string.Empty);
-        //    var TimeZone = map.GetAsStringWithDefault("time_zone", string.Empty);
-        //    var Language = map.GetAsStringWithDefault("language", string.Empty);
-        //    var Theme = map.GetAsStringWithDefault("theme", string.Empty);
-
-        //    return new UserPreferencesV1(Id, UserId, PreferredEmail, TimeZone, Language, Theme);
-        //}
     }
 }

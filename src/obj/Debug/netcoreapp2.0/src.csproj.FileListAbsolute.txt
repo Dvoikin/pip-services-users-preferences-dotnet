@@ -1,0 +1,9 @@
+C:\Work\ice\pip-services-users-preferences-dotnet\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.deps.json
+C:\Work\ice\pip-services-users-preferences-dotnet\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.dll
+C:\Work\ice\pip-services-users-preferences-dotnet\src\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.pdb
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\src.csprojResolveAssemblyReference.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\src.csproj.CoreCompileInputs.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\src.AssemblyInfoInputs.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\src.AssemblyInfo.cs
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\PipServices.UsersPreferences.dll
+C:\Work\ice\pip-services-users-preferences-dotnet\src\obj\Debug\netcoreapp2.0\PipServices.UsersPreferences.pdb

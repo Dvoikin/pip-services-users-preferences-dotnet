@@ -1,0 +1,13 @@
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\run.deps.json
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\run.runtimeconfig.json
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\run.runtimeconfig.dev.json
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\run.dll
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\run.pdb
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.dll
+C:\Work\ice\pip-services-users-preferences-dotnet\run\bin\Debug\netcoreapp2.0\PipServices.UsersPreferences.pdb
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.csprojResolveAssemblyReference.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.csproj.CoreCompileInputs.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.AssemblyInfoInputs.cache
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.AssemblyInfo.cs
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.dll
+C:\Work\ice\pip-services-users-preferences-dotnet\run\obj\Debug\netcoreapp2.0\run.pdb

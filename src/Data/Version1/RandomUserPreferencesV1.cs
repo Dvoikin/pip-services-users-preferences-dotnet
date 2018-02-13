@@ -30,22 +30,6 @@ namespace PipServices.UsersPreferences.Data.Version1
             return value;
         }
 
-        //public static notificationpreferencev1[] notifications()
-        //{
-        //    var count = randominteger.nextinteger(0, 5);
-        //    var notifications = new notificationpreferencev1[count];
-
-        //    for (var index = 0; index < count; index++)
-        //    {
-        //        notifications[index] = new notificationpreferencev1();
-        //        notifications[index].area = randomtext.word().tolower();
-        //        notifications[index].emailminseverity = (minnotificationseverityv1)randominteger.nextinteger(-1, 3);
-        //        notifications[index].showminseverity = (minnotificationseverityv1)randominteger.nextinteger(-1, 3);
-        //    }
-
-        //    return notifications;
-        //}
-
         public static UserPreferencesV1 UserPreferences()
         {
             return new UserPreferencesV1
@@ -55,8 +39,7 @@ namespace PipServices.UsersPreferences.Data.Version1
                 PreferredEmail = PrefferdEmail(),
                 TimeZone = TimeZone(),
                 Language = Language(),
-                Theme = Theme(),
-                //Notifications = Notifications()
+                Theme = Theme()
             };
         }
     }

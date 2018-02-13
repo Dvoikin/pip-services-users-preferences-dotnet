@@ -9,7 +9,7 @@ using PipServices.UsersPreferences.Persistence;
 
 namespace PipServices.UsersPreferences.Logic
 {
-    public class UsersPreferencesController : IConfigurable, ICommandable, IUsersPreferencesController
+    public class UsersPreferencesController : IReferenceable, IConfigurable, ICommandable, IUsersPreferencesController
     {
         private static ConfigParams _defaultConfig = ConfigParams.FromTuples("dependencies.persistence", "pip-services-users-preferences:persistence:*:*:1.0");
 
