@@ -27,12 +27,12 @@ namespace PipServices.UsersPreferences.Logic
             _dependencyResolver.SetReferences(references);
             _persistence = _dependencyResolver.GetOneRequired<IUsersPreferencesPersistence>("persistence");
         }
-        
+
         public CommandSet GetCommandSet()
         {
             return _commandSet ?? (_commandSet = new UsersPreferencesCommandSet(this));
         }
-        
+
         public Task<DataPage<UserPreferencesV1>> GetUsersPreferencesAsync(string correlationId, FilterParams filter, PagingParams paging)
         {
             return _persistence.GetPageByFilterAsync(correlationId, filter, paging);
@@ -61,6 +61,12 @@ namespace PipServices.UsersPreferences.Logic
             };
 
             return _persistence.SetAsync(correlationId, up);
+        }
+
+        public Task<UserPreferencesV1> ClearUsersPreferencesAsync(string correlationId) {
+            _persistence.ClearAsync(correlationId);
+
+            return null;
         }
     }
 }

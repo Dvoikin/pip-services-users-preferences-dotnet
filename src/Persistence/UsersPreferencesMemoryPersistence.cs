@@ -17,15 +17,10 @@ namespace PipServices.UsersPreferences.Persistence
             return base.GetPageByFilterAsync(correlationId, ComposeFilter(filterParams), paging);
         }
 
-        public Task<UserPreferencesV1> ClearAsync(string correlationId, UserPreferencesV1 UserPreferences)
-        {
+        public Task<UserPreferencesV1> ClearByIdAsync(string correlationId, string UserPreferencesId) {
             return base.SetAsync(correlationId, new UserPreferencesV1 {
-                Id = UserPreferences.Id,
-                UserId = UserPreferences.UserId,
-                PreferredEmail = null,
-                TimeZone = null,
-                Language = null,
-                Theme = null
+                Id = UserPreferencesId,
+                UserId = UserPreferencesId
             });
         }
 

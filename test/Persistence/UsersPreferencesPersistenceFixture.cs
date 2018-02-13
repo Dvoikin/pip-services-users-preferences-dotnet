@@ -68,10 +68,8 @@ namespace PipServices.UsersPreferences.Persistence
             Assert.Equal("3", userPreferences.UserId);
 
             // Delete the quote
-            await _persistence.ClearAsync(null, userPreferences1);
+            userPreferences = await _persistence.ClearByIdAsync(null, userPreferences1.UserId);
 
-            // Try to get deleted quote
-            userPreferences = await _persistence.GetOneByIdAsync(null, userPreferences1.UserId);
             Assert.Null(userPreferences.Theme);
         }
 

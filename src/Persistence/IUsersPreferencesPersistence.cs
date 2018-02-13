@@ -10,6 +10,7 @@ namespace PipServices.UsersPreferences.Persistence
     {
         Task<DataPage<UserPreferencesV1>> GetPageByFilterAsync(string correlationId, FilterParams filter, PagingParams paging);
         Task<UserPreferencesV1> GetOneByIdAsync(string correlationId, string UserPreferencesId);
-        Task<UserPreferencesV1> ClearAsync(string correlationId, UserPreferencesV1 UserPreferences);
+        Task ClearAsync(string correlationId);
+        Task<UserPreferencesV1> ClearByIdAsync(string correlationId, string UserPreferencesId);
     }
 }

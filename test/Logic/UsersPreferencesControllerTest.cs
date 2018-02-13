@@ -69,10 +69,8 @@ namespace PipServices.UsersPreferences.Logic
             Assert.Equal("3", userPreferences.UserId);
 
             // Delete the userPreferences
-            await _persistence.ClearAsync(null, userPreferences1);
+            userPreferences = await _persistence.ClearByIdAsync(null, userPreferences1.UserId);
 
-            // Try to get deleted userPreferences
-            userPreferences = await _persistence.GetOneByIdAsync(null, userPreferences1.Id);
             Assert.Null(userPreferences.Theme);
         }
 

@@ -75,6 +75,17 @@ namespace PipServices.UsersPreferences.Logic
                 });
         }
 
+        private ICommand MakeClearUsersPreferencesByIdCommand()
+        {
+            return new Command(
+                "clear_users_preferences",
+                new ObjectSchema(),
+                async (correlationId, parameters) =>
+                {
+                    return await _logic.ClearUsersPreferencesAsync(correlationId);
+                });
+        }
+
         private static UserPreferencesV1 ConvertToUserPreferences(object value)
         {
             var json = JsonConverter.ToJson(value);
